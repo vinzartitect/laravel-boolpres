@@ -22,7 +22,11 @@
                         >
                     </p>
                     <p class="card-text">{{ post.content }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <router-link
+                        :to="{ name: 'post-detail', params: { id: post.id } }"
+                        class="btn btn-primary"
+                        >View</router-link
+                    >
                 </div>
                 <div class="card-footer text-muted">2 days ago</div>
             </div>
