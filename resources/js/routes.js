@@ -11,6 +11,7 @@ import NotFoundPage from './components/pages/NotFoundPage.vue';
 //Inizializzare il router
 const router = new VueRouter({
     mode: 'history',
+    linkExactActiveClass: 'active',
     routes: [
         { path: '/', component: HomePage, name: 'home' },
         { path: '/contacts', component: ContactPage, name: 'contacts' },

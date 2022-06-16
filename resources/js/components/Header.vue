@@ -38,3 +38,9 @@ export default {
     name: "header",
 };
 </script>
+
+<style scoped>
+/* .active{
+    color: red !important;
+} */
+</style>
