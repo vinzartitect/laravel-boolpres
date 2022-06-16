@@ -47,8 +47,16 @@ export default {
             axios
                 .get("http://127.0.0.1:8000/api/posts")
                 .then((res) => {
-                    // console.log( res.data.posts );
-                    this.posts = res.data.posts;
+                    // console.log( res.data.posts.data );
+
+                    // destrutturizzazione
+                    const { data, current_page, last_page } = res.data.posts;
+
+                    // console.log(data);
+                    // console.log(current_page);
+                    // console.log(last_page);
+
+                    this.posts = data;
                 })
                 .then(() => {
                     console.log("terminato il caricamento dei posts");

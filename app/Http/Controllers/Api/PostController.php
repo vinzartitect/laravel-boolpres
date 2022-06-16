@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('updated_at', 'DESC')->with('Category','tags' )->limit(5)->get();
+        // $posts = Post::orderBy('updated_at', 'DESC')->with('Category','tags' )->limit(5)->get();
+
+        $posts = Post::orderBy('updated_at', 'DESC')->with('Category','tags' )->paginate(2);
 
         return response()->json( compact('posts') );
     }
