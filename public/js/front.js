@@ -2141,8 +2141,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PostDetailPage"
+  name: "PostDetailPage",
+  data: function data() {
+    return {
+      post: []
+    };
+  },
+  methods: {
+    getPost: function getPost() {
+      var _this = this;
+
+      axios.get("http://127.0.0.1:8000/api/posts/".concat(this.$route.params.id)).then(function (res) {
+        console.log(res.data); // console.log(data);
+
+        _this.post = res.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getPost();
+    console.log(this.$route.params.id);
+    console.log("ciao");
+    console.log(this.$route);
+    console.log(this.$route.params);
+  }
 });
 
 /***/ }),
@@ -3734,16 +3758,13 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Pagina singola del post: " + _vm._s(_vm.post.title))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Pagina singola del post")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
