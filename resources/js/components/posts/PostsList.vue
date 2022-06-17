@@ -5,7 +5,7 @@
 
         <div v-if="posts.length">
             <!-- inseriamo il componente della pagination -->
-            <Pagination :pagination="pagination" />
+            <Pagination :pagination="pagination" @on-page-change="getPosts" />
 
             <div class="card text-center" v-for="post in posts" :key="post.id">
                 <div class="card-header">
@@ -53,9 +53,9 @@ export default {
         };
     },
     methods: {
-        getPosts() {
+        getPosts(page = 1) {
             axios
-                .get("http://127.0.0.1:8000/api/posts")
+                .get("http://127.0.0.1:8000/api/posts?page=" + page)
                 .then((res) => {
                     // console.log( res.data.posts.data );
 
